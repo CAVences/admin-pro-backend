@@ -17,6 +17,9 @@ app.use(express.json());
 //Base de datos
 bdConnection();
 
+// Directorio publico
+app.use(express.static('public'));
+
 //PASS
 //uASTBcNzDmVZ4WYH
 //MEAN_USER
