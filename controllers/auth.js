@@ -40,7 +40,6 @@ const login = async(req, res = response ) => {
         })
         
     } catch (error) {
-        console.log(error);
 
         res.json({
             status: false,
@@ -65,7 +64,7 @@ const googleSigIn = async (req, res = response) => {
             usuario = new Usuario({
                 nombre: name,
                 email,
-                password: '',
+                password: '@@',
                 img: picture,
                 google: true
             });
@@ -99,9 +98,12 @@ const renewToken = async (req, res = response) => {
 
     const token = await generarJWT(uid)
 
+    const usuario = await Usuario.findById(uid);
+
     res.json({
         status: true,
-        token
+        token,
+        usuario
     })
 
 }

@@ -101,7 +101,15 @@ const actualizarUsuario = async (req, res = response ) => {
             }
         }
         
-        campos.email = email;
+        if(!usuarioBD.google) {
+            campos.email = email;
+        } else if(usuarioBD.email !== email) {
+            return res.status(400).json({
+                status: false,
+                message: 'Usuarios logeados por google no pueden cambiar su correo'
+            })
+        }
+        
         const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos, {new: true});
 
         res.json({

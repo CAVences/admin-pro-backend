@@ -28,7 +28,6 @@ const crearHospital = async(req, res = response) => {
         })
         
     } catch (error) {
-        console.log(error)
         res.json({
             status: false,
             message: 'Error inesperado'

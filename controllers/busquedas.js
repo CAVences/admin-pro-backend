@@ -48,7 +48,7 @@ const getColeccion = async (req, res = response) => {
                                 .populate('usuario', 'nombre img')
         break
         case 'usuarios':
-            data = await Hospital.find({ nombre: regex });
+            data = await Usuario.find({ nombre: regex });
         break
         default: 
             return res.status(400).json({
