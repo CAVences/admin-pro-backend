@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { bdConnection } = require('./database/config')
 const cors = require('cors')
 require('dotenv').config();
@@ -31,6 +32,13 @@ app.use('/api/medicos', require('./routes/medicos'));
 app.use('/api/busqueda', require('./routes/busquedas'));
 app.use('/api/upload', require('./routes/uploads'));
 app.use('/api/login', require('./routes/auth'));
+
+//Esto sirve para que funcionen las rutas de angular
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve( __dirname, 'public/index.html'));
+})
+
+
 
 
 
